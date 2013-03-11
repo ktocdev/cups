@@ -1,0 +1,57 @@
+.container{
+	margin: 5em auto;
+	padding: 0;
+	height: 8em;
+	width: 25em;
+	position: relative;
+}
+.cup{
+	background-color: #e4e4e4;
+	cursor: pointer;
+	width: 3em;
+	float: left;
+	position: absolute;
+	bottom: 0;
+	border: 3px solid white;
+	-moz-transition: border .25s; /* Firefox 4 */
+	-webkit-transition: border .25s; /* Safari and Chrome */
+	-o-transition: border .25s; /* Opera */
+}
+.cup:hover{
+	border: 3px solid #e3e3e3;
+}
+.clicked{
+	border: 3px solid #ccc;
+	-moz-transition: border .25s; /* Firefox 4 */
+	-webkit-transition: border .25s; /* Safari and Chrome */
+	-o-transition: border .25s; /* Opera */
+}
+.fill{
+	background-color: #f79165;
+	color: #fff;
+	text-align: center;
+	font-family: Arial, sans-serif;
+	position: absolute;
+	bottom: 0;
+	width: 3em;
+	-moz-transition: height .25s; /* Firefox 4 */
+	-webkit-transition: height .25s; /* Safari and Chrome */
+	-o-transition: height .25s; /* Opera */
+}
+.fill p{
+	margin: 0;
+	position: relative;
+	top: 5px;
+}
+.dark{
+	color: #ccc;
+}
+.second{
+	left: 8em;
+}
+.third{
+	left: 16em;
+}
+.last{
+	margin: 0;
+}
