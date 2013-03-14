@@ -1,42 +1,58 @@
 .container{
+	color: #fff;
+	font-family: Arial, sans-serif;
 	margin: 5em auto;
 	padding: 0;
 	height: 8em;
 	width: 25em;
 	position: relative;
 }
-.cup{
-	background-color: #e4e4e4;
+.cup,
+.cup.inactive:hover{
+	background-color: #414A57;
+	border: 5px solid #fff;
 	cursor: pointer;
 	width: 3em;
 	float: left;
 	position: absolute;
 	bottom: 0;
-	border: 3px solid white;
 	-moz-transition: border .25s; /* Firefox 4 */
 	-webkit-transition: border .25s; /* Safari and Chrome */
 	-o-transition: border .25s; /* Opera */
 }
 .cup:hover{
-	border: 3px solid #e3e3e3;
+	background-color: #5E86D2;
+	border-color: #FFAA00;
 }
-.clicked{
-	border: 3px solid #ccc;
+.cup.inactive:hover{
+	cursor: default;
+}
+.cup.clicked{		
+	background-color: #455F92;
+	border-color: #FFAA00;
 	-moz-transition: border .25s; /* Firefox 4 */
 	-webkit-transition: border .25s; /* Safari and Chrome */
 	-o-transition: border .25s; /* Opera */
 }
 .fill{
-	background-color: #f79165;
-	color: #fff;
+	background-color: #FF6C03;
+	cursor: pointer;
 	text-align: center;
-	font-family: Arial, sans-serif;
 	position: absolute;
 	bottom: 0;
 	width: 3em;
 	-moz-transition: height .25s; /* Firefox 4 */
 	-webkit-transition: height .25s; /* Safari and Chrome */
 	-o-transition: height .25s; /* Opera */
+}
+.inactive .fill{
+	cursor: default;
+}
+.fill:hover{
+	background-color: #FF6C03;
+	-moz-transition: background-color .25s linear; /* Firefox 4 */
+	-webkit-transition: background-color .25s linear; /* Safari and Chrome */
+	-o-transition: background-color .25s linear; /* Opera */
 }
 .fill p{
 	margin: 0;

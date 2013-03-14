@@ -9,7 +9,9 @@ jQuery(function ($) {
 		_fill: function(cup,amount){
 			$(cup).find('.fill').height(amount + 'em').html('<p>' + amount + '</p>');
 			if (amount == 0){
-				$(cup).find('.fill p').addClass('dark');
+				$(cup).addClass('inactive').addClass('dark');
+			} else {
+				$(cup).removeClass('dark');
 			}
 			cup.amount = amount;
 		},
@@ -19,7 +21,6 @@ jQuery(function ($) {
 			if (amountLeft >= first.amount){ // poured amount completely fits in new cup
 				Cups._fill(second,second.amount + first.amount); // fill second cup with amount from first
 				Cups._fill(first,0); // empty the first cup
-				
 			} else { // cup to be filled not large enough for full amount
 				var leftovers = first.amount - amountLeft;  //find leftovers from pour
 				Cups._fill(second,second.size); // fill 2nd cup
@@ -50,9 +51,11 @@ jQuery(function ($) {
 				$(this).height(this.size + 'em');
 				if ($(this).index() == 0){
 					this.amount = parseInt($(this).attr('data'));
-					Cups._fill(this,this.amount);
 					goal = this.amount/2;
-				}
+				} else {
+					$(this).addClass('inactive');
+				}					
+				Cups._fill(this,this.amount);
 			});
 		},
 		
@@ -71,8 +74,12 @@ jQuery(function ($) {
 					$(this).removeClass('clicked');
 				} else {
 					if (noneClicked == true){
+						if ($(this).hasClass('inactive')){
+							return;
+						} 
 						$(this).addClass('clicked');
 						first = this;
+						$('.cup').removeClass('inactive');
 					} else {
 						$(this).addClass('clicked');
 						second = this;
@@ -82,6 +89,7 @@ jQuery(function ($) {
 						second = '';
 						cup.each( function(){
 							$(this).removeClass('clicked');
+							Cups._fill(this,this.amount);
 						});
 					}
 				}	
