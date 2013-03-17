@@ -1,7 +1,7 @@
 jQuery(function ($) {
 	var Cups = {
 		init: function () {
-			var goal;
+			var goal = 0;
 			this.build();
 			this.click();
 		},
@@ -9,9 +9,11 @@ jQuery(function ($) {
 		_fill: function(cup,amount){
 			$(cup).find('.fill').height(amount + 'em').html('<p>' + amount + '</p>');
 			if (amount == 0){
-				$(cup).addClass('inactive').addClass('dark');
+				$(cup).addClass('inactive');
+				$(cup).children().addClass('dark')
 			} else {
 				$(cup).removeClass('dark');
+				$(cup).children().removeClass('dark')
 			}
 			cup.amount = amount;
 		},
@@ -29,6 +31,21 @@ jQuery(function ($) {
 			Cups._checkWinner();
 		},
 		
+		_displayAmount: function(cup,amount){
+			var label = $(cup).siblings();			
+			label.html(amount + " oz");
+		},
+		
+		_displayGoal: function(cups, goal){
+			var goalContainer = $('.goal'),
+				goalAmount = goal,
+				cupArray = new Array();
+			cups.each(function (i){
+				cupArray[i] = this.size;
+			});
+			$(goalContainer).html('Pour contents from glass to glass. The goal is to end with ' + goal + 'oz in the '+ cupArray[0] + 'oz and ' + cupArray[1] + 'oz glasses, and 0oz in the ' + cupArray[2] + 'oz glass. Good luck! ');
+		},
+		
 		_checkWinner: function(){
 			var cups = this.cups,
 						goalReached = 0;
@@ -44,19 +61,28 @@ jQuery(function ($) {
 	
 		build: function (){
 			this.cups = $('.cup');
-			var cups = this.cups;
+			var cups = this.cups,
+						wrap = '<div class="group" />',
+						label = '<div class="text-bubble" />',
+						fill = '<div class="fill" />';
 			cups.each(function (i){
 				this.amount = 0;
-				this.size = parseInt($(this).attr('data'));
-				$(this).height(this.size + 'em');
-				if ($(this).index() == 0){
+				this.size = parseInt($(this).attr('data'));		
+				// building appearance of cups
+				$(this).wrap(wrap); 
+				$(this).append(fill);
+				$(this).parent().height(this.size + 'em');
+				$(this).parent().addClass('group' + i);
+				$(this).parent().append(label);
+				// set goal amount
+				if ($(this).parent().index() == 0){
 					this.amount = parseInt($(this).attr('data'));
 					goal = this.amount/2;
-				} else {
-					$(this).addClass('inactive');
-				}					
+				}		
 				Cups._fill(this,this.amount);
+				Cups._displayAmount(this,this.size);
 			});
+			Cups._displayGoal(cups, goal);
 		},
 		
 		click: function (){

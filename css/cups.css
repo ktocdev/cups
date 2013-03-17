@@ -1,11 +1,18 @@
+body{
+		color: #777;
+}
 .container{
-	color: #fff;
 	font-family: Arial, sans-serif;
-	margin: 5em auto;
+	margin: 2em auto;
 	padding: 0;
 	height: 8em;
-	width: 25em;
+	width: 20em;
 	position: relative;
+}
+.group{
+	float: left;
+	position: absolute;
+	bottom: 0;
 }
 .cup,
 .cup.inactive:hover{
@@ -13,12 +20,12 @@
 	border: 5px solid #fff;
 	cursor: pointer;
 	width: 3em;
-	float: left;
-	position: absolute;
-	bottom: 0;
+	height: 100%;
 	-moz-transition: border .25s; /* Firefox 4 */
 	-webkit-transition: border .25s; /* Safari and Chrome */
 	-o-transition: border .25s; /* Opera */
+	position: relative;
+	bottom: 0;
 }
 .cup:hover{
 	background-color: #5E86D2;
@@ -36,10 +43,11 @@
 }
 .fill{
 	background-color: #FF6C03;
+	bottom: 0;
+	color: #fff;
 	cursor: pointer;
 	text-align: center;
 	position: absolute;
-	bottom: 0;
 	width: 3em;
 	-moz-transition: height .25s; /* Firefox 4 */
 	-webkit-transition: height .25s; /* Safari and Chrome */
@@ -58,14 +66,59 @@
 	margin: 0;
 }
 .dark{
-	color: #ccc;
+	color: #777;
 }
-.second{
+.group1{
 	left: 8em;
 }
-.third{
+.group2{
 	left: 16em;
-}
-.last{
 	margin: 0;
+}
+.text-bubble {
+	background-color: #eee;
+	border-radius: 10px 10px 10px 10px;
+	margin: 2.3em 0 0 -.9em;
+	padding: 15px 15px 18px;
+	position: absolute;
+	text-align: center;
+	top: 100%;
+	width: 100%;
+}
+.text-bubble:after {	
+	border-color: #eee transparent;
+	border-style: solid;
+	border-width: 0 15px 15px;
+	top: -.9em;
+	content: "";
+	display: block;
+	left: 50%;
+	position: absolute;
+	margin: 0 0 0 -1em;
+	width: 0;
+}
+.large{
+	width: 20em;
+	text-align: left;
+}
+.slides{
+	display: none;
+}
+.help{
+	border: 1px solid #aaa;
+	border-radius: 0.7em 0.7em 0.7em 0.7em;
+	cursor: pointer;
+	font-size: 1em;
+	height: 1em;
+	padding: 0.1em 0.2em 0.2em 0.2em;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	text-align: center;
+	width: 1em;
+}
+.help:hover{
+	background-color: #eee;
+	border-color: #777;
+	color: #777;
 }
