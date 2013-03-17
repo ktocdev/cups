@@ -1,11 +1,17 @@
 body{
-		color: #777;
+	font-family: Arial, sans-serif;
+	color: #777;
+}
+p{
+	margin: 0;
+}	
+header{
+	width: 20em;
+	margin: auto;
 }
 .container{
-	font-family: Arial, sans-serif;
 	margin: 2em auto;
 	padding: 0;
-	height: 8em;
 	width: 20em;
 	position: relative;
 }
@@ -62,9 +68,6 @@ body{
 	-webkit-transition: background-color .25s linear; /* Safari and Chrome */
 	-o-transition: background-color .25s linear; /* Opera */
 }
-.fill p{
-	margin: 0;
-}
 .dark{
 	color: #777;
 }
@@ -76,7 +79,7 @@ body{
 	margin: 0;
 }
 .text-bubble {
-	background-color: #eee;
+	background-color: #e7e7e7;
 	border-radius: 10px 10px 10px 10px;
 	margin: 2.3em 0 0 -.9em;
 	padding: 15px 15px 18px;
@@ -86,7 +89,7 @@ body{
 	width: 100%;
 }
 .text-bubble:after {	
-	border-color: #eee transparent;
+	border-color: #e7e7e7 rgba(255,255,255,0);
 	border-style: solid;
 	border-width: 0 15px 15px;
 	top: -.9em;
@@ -105,12 +108,12 @@ body{
 	display: none;
 }
 .help{
-	border: 1px solid #aaa;
+	background-color: #e7e7e7;
 	border-radius: 0.7em 0.7em 0.7em 0.7em;
 	cursor: pointer;
 	font-size: 1em;
 	height: 1em;
-	padding: 0.1em 0.2em 0.2em 0.2em;
+	padding: 0.3em;
 	position: absolute;
 	top: 0;
 	left: 100%;
@@ -118,7 +121,5 @@ body{
 	width: 1em;
 }
 .help:hover{
-	background-color: #eee;
-	border-color: #777;
-	color: #777;
+	background-color: #dfdfdf;
 }

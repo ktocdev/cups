@@ -43,7 +43,7 @@ jQuery(function ($) {
 			cups.each(function (i){
 				cupArray[i] = this.size;
 			});
-			$(goalContainer).html('Pour contents from glass to glass. The goal is to end with ' + goal + 'oz in the '+ cupArray[0] + 'oz and ' + cupArray[1] + 'oz glasses, and 0oz in the ' + cupArray[2] + 'oz glass. Good luck! ');
+			$(goalContainer).html('The goal is to end with ' + goal + 'oz in the '+ cupArray[0] + 'oz and ' + cupArray[1] + 'oz glasses, and 0oz in the ' + cupArray[2] + 'oz glass. Good luck! ');
 		},
 		
 		_checkWinner: function(){
@@ -78,6 +78,7 @@ jQuery(function ($) {
 				if ($(this).parent().index() == 0){
 					this.amount = parseInt($(this).attr('data'));
 					goal = this.amount/2;
+					$('.container').height(this.amount + 'em');
 				}		
 				Cups._fill(this,this.amount);
 				Cups._displayAmount(this,this.size);
